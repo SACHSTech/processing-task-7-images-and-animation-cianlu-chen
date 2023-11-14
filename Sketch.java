@@ -1,36 +1,46 @@
 import processing.core.PApplet;
+import processing.core.PImage; 
 
 public class Sketch extends PApplet {
 	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+	PImage imgOcean;
+  PImage imgSeagull;
+
+  int seagullX = width / 2;
+  int seagullY = height / 2;
+
+  int xDirection = 10;
+  int yDirection = 10;
+ 
   public void settings() {
-	// put your size call here
-    size(400, 400);
+    size(800, 800);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
+    imgOcean = loadImage("ocean.png");
+    imgOcean.resize(800, 800);
+
+    imgSeagull = loadImage("seagull.png");
+    imgSeagull.resize(150, 150);
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+    image(imgOcean, 0, 0);
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    image(imgSeagull, seagullX, seagullY);
+
+    seagullX = seagullX - xDirection;
+    seagullY = seagullY + yDirection;
+
+    if ((seagullX / 2) == 0 || seagullX == 800){
+      xDirection = xDirection * -1;
+    }
+
+    if ((seagullY / 2) == 0 || seagullY == 800){
+      yDirection = yDirection * -1;
+    }
+
+
   }
   
-  // define other methods down here.
 }
