@@ -12,12 +12,12 @@ public class Sketch extends PApplet {
   int xSpeedSeagull = 2;
   int ySpeedSeagull = 2;
 
-  int cloudX = 10; 
-  int cloudY = 400;
+  double cloudX = 20; 
+  double cloudY = 20;
 
   int cloudSpeedX = -1;
   int cloudSpeedY = -1;
- 
+
   public void settings() {
     size(750, 750);
   }
@@ -47,20 +47,10 @@ public class Sketch extends PApplet {
     } 
 
     noStroke();
+    fill(247, 245, 240);
 
     ellipse((int) cloudX, (int) cloudY + 20, 120, 75);
     ellipse((int) cloudX + 30, (int) cloudY, 135, 90);
     ellipse((int) cloudX - 30, (int) cloudY - 10, 120, 100);
-    
-    cloudX = cloudX - cloudSpeedX;
-    cloudY = cloudY + cloudSpeedY;
-
-    if (cloudX / 2 < 0 || cloudX > 650){
-      cloudSpeedX = cloudSpeedX * -1;
-    }
-
-    if (cloudY / 2 < 200 || cloudY > 560){
-      cloudSpeedY = cloudSpeedY * -1;
-    } 
   }
 }
