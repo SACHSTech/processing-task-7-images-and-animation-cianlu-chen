@@ -2,21 +2,23 @@ import processing.core.PApplet;
 import processing.core.PImage; 
 
 public class Sketch extends PApplet {
-	
+	// Images
 	PImage imgOcean;
   PImage imgSeagull;
 
+  // Seagull coordinates & speed
   int seagullX = 600;
   int seagullY = 120;
 
   int xSpeedSeagull = 2;
   int ySpeedSeagull = 2;
 
-  double cloudX = 20; 
-  double cloudY = 20;
+  // Cloud coordinates & speed
+  float cloudX = 120; 
+  float cloudY = 120;
 
-  int cloudSpeedX = -1;
-  int cloudSpeedY = -1;
+  int cloudSpeedX = 1;
+  int cloudSpeedY = 1;
 
   public void settings() {
     size(750, 750);
@@ -38,11 +40,11 @@ public class Sketch extends PApplet {
     seagullX = seagullX - xSpeedSeagull;
     seagullY = seagullY + ySpeedSeagull;
 
-    if (seagullX / 2 == 0 || seagullX == 630){
+    if (seagullX / 2 == -20 || seagullX == 630){
       xSpeedSeagull = xSpeedSeagull * -1;
     }
 
-    if (seagullY / 2 == 0 || seagullY == 630){
+    if (seagullY / 2 == -20 || seagullY == 630){
       ySpeedSeagull = ySpeedSeagull * -1;
     } 
 
@@ -52,5 +54,17 @@ public class Sketch extends PApplet {
     ellipse((int) cloudX, (int) cloudY + 20, 120, 75);
     ellipse((int) cloudX + 30, (int) cloudY, 135, 90);
     ellipse((int) cloudX - 30, (int) cloudY - 10, 120, 100);
+    
+    cloudX = cloudX - sin(X) + cloudSpeedX;
+    cloudY = cloudY - sin(X) + cloudSpeedY;
+
+    if (cloudX / 2 == 0 || cloudX == 750){
+      cloudSpeedX = cloudSpeedX * -1;
+    }
+
+    if (cloudY / 2 == 30 || cloudY == 280){
+      cloudSpeedY = cloudSpeedY * -1;
+    } 
+
   }
 }
