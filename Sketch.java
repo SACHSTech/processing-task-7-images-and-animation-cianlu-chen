@@ -55,14 +55,14 @@ public class Sketch extends PApplet {
     ellipse((int) cloudX + 30, (int) cloudY, 135, 90);
     ellipse((int) cloudX - 30, (int) cloudY - 10, 120, 100);
     
-    cloudX = cloudX - sin(X) + cloudSpeedX;
-    cloudY = cloudY - sin(X) + cloudSpeedY;
+    cloudX = cloudX - 750*sin(10 * X) + cloudSpeedX;
+    cloudY = cloudY - 750*sin(10 * X) + cloudSpeedY;
 
     if (cloudX / 2 == 0 || cloudX == 750){
       cloudSpeedX = cloudSpeedX * -1;
     }
 
-    if (cloudY / 2 == 30 || cloudY == 280){
+    if (cloudY / 2 == 30 || cloudY == 750){
       cloudSpeedY = cloudSpeedY * -1;
     } 
 
